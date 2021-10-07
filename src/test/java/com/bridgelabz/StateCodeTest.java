@@ -7,11 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CensusAnalyserTest {
-    private Assertions Assert;
-
+public class StateCodeTest {
     ReadOperation readObj = new ReadOperation();
-    String fileName = "IndiaStateCensusData";
+    String fileName = "IndiaStateCode";
+    private Assertions Assert;
 
     /**
      * Purpose : Given the States Census CSV file
@@ -19,10 +18,10 @@ public class CensusAnalyserTest {
      */
     @Test
     public void givenStateCensusCSVFileCorrect_EnsureNumberOfRecordsMatch() throws CensusAnalyserException {
-        String filePathRead = "C:\\Users\\panda\\IdeaProjects\\Indiancensusanalyser\\src\\main\\resources\\IndiaStateCensusData";
+        String filePathRead = "C:\\Users\\panda\\IdeaProjects\\Indiancensusanalyser\\src\\main\\resources\\IndiaStateCode";
         try {
             int count = readObj.readDataCount(filePathRead, fileName);
-            Assert.assertEquals(29, count);
+            Assert.assertEquals(38, count);
         } catch (CensusAnalyserException e) {
             e.printStackTrace();
         }
@@ -34,12 +33,11 @@ public class CensusAnalyserTest {
      */
 
     @Test
-    public void givenStateCensusCSVFile_WhenFileNameIncorrectShouldThrowException() {
-        String filePathRead = "C:\\Users\\panda\\IdeaProjects\\Indiancensusanalyser\\src\\main\\resources\\IndiaStateCensusData";
-
+    public void givenStateCensusCSVFile_WhenFileNameIncorrectShouldThrowException() throws CensusAnalyserException {
+        String filePathRead = "C:\\Users\\panda\\IdeaProjects\\Indiancensusanalyser\\src\\main\\resources\\IndiaStateCode";
         try {
             int count = readObj.readDataCount(filePathRead, fileName);
-            Assert.assertEquals(29, count);
+            Assert.assertEquals(38, count);
         } catch (CensusAnalyserException e) {
             e.printStackTrace();
         }
@@ -51,7 +49,7 @@ public class CensusAnalyserTest {
      */
     @Test
     public void givenStateCensusCSVFile_WhenFileTypeIncorrectShouldThrowException() {
-        String filePathRead = "C:\\Users\\panda\\IdeaProjects\\Indiancensusanalyser\\src\\main\\resources\\IndiaStateCensusData";
+        String filePathRead = "C:\\Users\\panda\\IdeaProjects\\Indiancensusanalyser\\src\\main\\resources\\IndiaStateCode";
 
         try {
             int count = readObj.readDataCount(filePathRead, fileName);
@@ -67,7 +65,7 @@ public class CensusAnalyserTest {
      */
     @Test
     public void givenStateCensusCSVFileCorrect_ButDelimiterIncorrectShouldThrowException() {
-        String filePathRead = "C:\\Users\\panda\\IdeaProjects\\Indiancensusanalyser\\src\\main\\resources\\IndiaStateCensusData";
+        String filePathRead = "C:\\Users\\panda\\IdeaProjects\\Indiancensusanalyser\\src\\main\\resources\\IndiaStateCode";
         String delimiter = ".";
         try {
             if (delimiter.equals(","))
@@ -84,9 +82,9 @@ public class CensusAnalyserTest {
      * Returns a Custom Exception
      */
     @Test
-    public void givenStateCensusCSVFileCorrect_ButHeaderIncorrectShouldThrowsException() {
+    public void givenStateCensusCSVFileCorrect_ButHeaderIncorrectShouldThrowException() {
         List<String> stringName = new ArrayList<>();
-        String filePathRead = "C:\\Users\\panda\\IdeaProjects\\Indiancensusanalyser\\src\\main\\resources\\IndiaStateCensusData";
+        String filePathRead ="C:\\Users\\panda\\IdeaProjects\\Indiancensusanalyser\\src\\main\\resources\\IndiaStateCode;";
         stringName.add("State");
         stringName.add("Population");
         stringName.add("AreaInSqKm");
